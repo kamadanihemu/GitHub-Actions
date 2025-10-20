@@ -1,9 +1,7 @@
 name: GitHub Actions Outputs Example
 
 on:
-  push:
-    branches:
-      - main
+  push:workflow_dispatch
 
 jobs:
   build:
