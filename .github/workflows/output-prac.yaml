@@ -8,10 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      result: ${{ steps.build.outputs.result }}
+      result: ${{ steps.build_step.outputs.result }}  # reference the correct step id
     steps:
       - name: Build
-        id: build
+        id: build_step
         run: echo "result=success" >> "$GITHUB_OUTPUT"
 
   deploy:
@@ -20,5 +20,5 @@ jobs:
     steps:
       - name: Deployment
         env:
-          BUILD_STATUS: "${{ needs.build.outputs.result }}"   # <- quoted for linters
+          BUILD_STATUS: ${{ needs.build.outputs.result }}
         run: echo "Build Status: $BUILD_STATUS"
