@@ -20,5 +20,5 @@ jobs:
     steps:
       - name: Deployment
         env:
-          BUILD_STATUS: ${{ needs.build.outputs.result }}
+          BUILD_STATUS: "${{ needs.build.outputs.result }}"   # <- quoted for linters
         run: echo "Build Status: $BUILD_STATUS"
